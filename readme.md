@@ -1,5 +1,7 @@
 # browserify-breakdown
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/seangenabe/browserify-breakdown.svg)](https://greenkeeper.io/)
+
 break down and analyze browserify/browser-pack bundles
 
 ## Usage
