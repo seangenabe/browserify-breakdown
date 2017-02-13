@@ -1,0 +1,49 @@
+{
+  "name": "browserify-breakdown",
+  "version": "1.0.0-1",
+  "description": "break down and analyze browserify/browser-pack bundles",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "keywords": [
+    "browserify",
+    "browser-pack",
+    "analyze",
+    "filesize",
+    "modules",
+    "tree",
+    "tool",
+    "size",
+    "structure",
+    "visualize",
+    "breakdown",
+    "analytics"
+  ],
+  "author": "Sean Genabe <seangenabe@outlook.com>",
+  "license": "MIT",
+  "bin": "bin/cmd.js",
+  "dependencies": {
+    "archy": "^1.0.0",
+    "browser-unpack": "^1.1.1",
+    "chalk": "^1.1.3",
+    "concat-stream": "^1.6.0",
+    "pretty-bytes": "^4.0.2"
+  },
+  "devDependencies": {
+    "JSONStream": "^1.3.0",
+    "ava": "^0.18.1",
+    "browser-pack": "^6.0.2",
+    "browserify": "^14.0.0",
+    "get-stream": "^3.0.0",
+    "module-deps": "^4.0.8",
+    "p-map": "^1.1.1",
+    "pify": "^2.3.0",
+    "stream-combiner2": "^1.1.1"
+  },
+  "ava": {
+    "files": [
+      "test/*.test.js"
+    ]
+  }
+}
