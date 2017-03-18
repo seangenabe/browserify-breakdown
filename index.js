@@ -41,7 +41,6 @@ function breakdownCore(bundleSrc) {
         {
           id: moduleId,
           circular: true,
-          level: level,
           // having a circular dep won't add anything to the total byte size
           size: 0
         }
