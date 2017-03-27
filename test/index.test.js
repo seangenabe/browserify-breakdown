@@ -68,3 +68,27 @@ test('circular dep', async t => {
   t.falsy(node_a_circular.deps)
   t.true(node_a_circular.circular)
 })
+
+test('bundles with isolated require()', async t => {
+  let fdir = `${__dirname}/fixture3`
+  let b = browserify(`${fdir}/a.js`, { fullPaths: true })
+  b.require(`${fdir}/b.js`, { expose: 'bee' })
+  let stream = b.bundle()
+  let bundleSrc = await getStream(stream)
+  let result = breakdown(bundleSrc)
+
+  /*
+  bundle
+    - a
+    - b
+  */
+
+  const node_bundle = result.deps[0]
+  const node_a = node_bundle.deps[0]
+  const node_b = node_bundle.deps[1]
+
+  t.truthy(node_a.size > 0)
+  t.truthy(node_b.size > 0)
+  t.is(node_b.id, 'bee')
+  t.deepEqual(result.isolatedNodes, ['bee'])
+})
