@@ -32,17 +32,17 @@ test('breakdown', async t => {
     - b
       - c
   */
-  const node_bundle = result.deps[0]
-  const node_a = node_bundle.deps[0]
-  const node_b = node_bundle.deps[1]
+  const node_index = result.deps[0]
+  const node_a = node_index.deps[0]
+  const node_b = node_index.deps[1]
   const node_c = node_b.deps[0]
 
   t.is(node_c.size, cz)
   t.is(node_b.size, bz)
   t.is(node_b.totalSize, bz + cz)
   t.is(node_a.size, az)
-  t.is(node_bundle.size, iz)
-  t.is(node_bundle.totalSize, iz + az + bz + cz)
+  t.is(node_index.size, iz)
+  t.is(node_index.totalSize, iz + az + bz + cz)
 })
 
 test('circular dep', async t => {
@@ -59,8 +59,8 @@ test('circular dep', async t => {
           - a (CIRCULAR)
   */
 
-  const node_bundle = result.deps[0]
-  const node_a = node_bundle.deps[0]
+  const node_index = result.deps[0]
+  const node_a = node_index.deps[0]
   const node_b = node_a.deps[0]
   const node_a_circular = node_b.deps[0]
 
@@ -83,9 +83,8 @@ test('bundles with isolated require()', async t => {
     - b
   */
 
-  const node_bundle = result.deps[0]
-  const node_a = node_bundle.deps[0]
-  const node_b = node_bundle.deps[1]
+  const node_a = result.deps[0]
+  const node_b = result.deps[1]
 
   t.truthy(node_a.size > 0)
   t.truthy(node_b.size > 0)
