@@ -2,6 +2,11 @@
 
 break down and analyze browserify/browser-pack bundles
 
+[![npm](https://img.shields.io/npm/v/browserify-breakdown.svg?style=flat-square)](https://www.npmjs.com/package/browserify-breakdown)
+[![Build Status](https://img.shields.io/travis/seangenabe/browserify-breakdown/master.svg?label=travis&style=flat-square)](https://travis-ci.org/seangenabe/browserify-breakdown)
+[![Dependency Status](https://img.shields.io/david/seangenabe/browserify-breakdown.svg?style=flat-square)](https://david-dm.org/seangenabe/browserify-breakdown)
+[![devDependency Status](https://img.shields.io/david/dev/seangenabe/browserify-breakdown.svg?style=flat-square)](https://david-dm.org/seangenabe/browserify-breakdown#info=devDependencies)
+
 ## Usage
 
 ### CLI
