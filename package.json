@@ -4,7 +4,8 @@
   "description": "break down and analyze browserify/browser-pack bundles",
   "main": "index.js",
   "scripts": {
-    "test": "ava"
+    "test": "nyc ava",
+    "report": "nyc report --reporter=html"
   },
   "keywords": [
     "browserify",
@@ -37,6 +38,7 @@
     "browserify": "^14.0.0",
     "get-stream": "^3.0.0",
     "module-deps": "^4.0.8",
+    "nyc": "^10.1.2",
     "p-map": "^1.1.1",
     "pify": "^2.3.0",
     "stream-combiner2": "^1.1.1"
