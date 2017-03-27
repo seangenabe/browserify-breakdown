@@ -37,22 +37,19 @@ function breakdownCore(bundleSrc) {
     delete nodes[moduleId]
     // Detect circular dep
     if (path[moduleId]) {
-      return [
-        {
-          id: moduleId,
-          circular: true,
-          // having a circular dep won't add anything to the total byte size
-          size: 0
-        }
-      ]
+      return {
+        id: moduleId,
+        circular: true,
+        // having a circular dep won't add anything to the total byte size
+        size: 0
+      }
     }
     path[moduleId] = true
 
     // Current module info
     var currentModuleInfo = {
       id: moduleId,
-      size: Buffer.byteLength(info[moduleId].source),
-      deps: []
+      size: Buffer.byteLength(info[moduleId].source)
     }
 
     // Find the module's dependencies
@@ -85,7 +82,7 @@ function breakdownCore(bundleSrc) {
   // Invoke assign total size to every node.
   function visitTotalSize(node) {
     node.totalSize = totalSize(node)
-    node.deps.forEach(function(node) {
+    node.deps && node.deps.forEach(function(node) {
       visitTotalSize(node)
     })
   }
@@ -99,8 +96,9 @@ function breakdownCore(bundleSrc) {
     else {
       visited[node.id] = true
     }
+    var deps = node.deps || []
     return node.size +
-      sum(node.deps.map(function(dep) { return totalSize(dep, visited) }))
+      sum(deps.map(function(dep) { return totalSize(dep, visited) }))
   }
 
   visitTotalSize(graphObject)
@@ -110,10 +108,6 @@ function breakdownCore(bundleSrc) {
     info: info,
     graph: graph
   }
-}
-
-function flatten(arr) {
-  return arr.reduce(function(a, b) { return a.concat(b) }, [])
 }
 
 function sum(arr) {
