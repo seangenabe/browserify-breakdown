@@ -37,9 +37,9 @@ process.stdin.pipe(concat(function(body) {
     label.push(')')
     label = label.join('')
 
-    var nodes = node.deps.map(function(node) {
+    var nodes = node.deps ? node.deps.map(function(node) {
       return prepareForArchyInput(node)
-    })
+    }) : []
 
     return { label: label, nodes: nodes }
   }
