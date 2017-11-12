@@ -1,6 +1,6 @@
 {
   "name": "browserify-breakdown",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "break down and analyze browserify/browser-pack bundles",
   "main": "index.js",
   "scripts": {
