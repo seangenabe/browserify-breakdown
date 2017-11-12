@@ -7,6 +7,7 @@
     "test": "nyc ava",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
+  "repository": "seangenabe/browserify-breakdown",
   "keywords": [
     "browserify",
     "browser-pack",
